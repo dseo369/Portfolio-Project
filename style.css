@@ -5,6 +5,10 @@ body {
     color: black;
 }
 
+.overview {
+    margin: 35px;
+}
+
 header {
     margin-left: 35px;
 }
