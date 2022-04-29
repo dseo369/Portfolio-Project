@@ -1,0 +1,28 @@
+.navbar {
+    font-size: 22px;
+    background-color: #184274;
+    width:100%;
+    position: sticky;
+    top: 0px;
+}
+  
+.navlist {
+    margin: 0;
+}
+
+.navitem {
+    display: inline-block;
+}
+  
+.navitem:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.navitem a {
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'Roboto Slab';
+    color: white;
+    padding: 10px 20px;
+}
