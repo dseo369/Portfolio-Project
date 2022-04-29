@@ -3,19 +3,44 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Flight</title>
+
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">    
+        <link rel="stylesheet" href="style.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
 	</head>
 	<body>
-        <h2>This is the Flight page.</h2>
-	    <p><a href="index.html">Return to index.html</a></p>
-	    
-	<button type="button">insert</button>
-	<button type="button">delete</button>
-	<button type="button">update</button>
-	<button type="button">select</button>
+        <header>
+			<h2>This is the Flight page.</h2>
+		</header>
+
+		<nav class="navbar">
+            <ul class="navlist">
+				<li class="navitem"><a href="index.html">Home</a></li>
+				<li class="navitem"><a href="flight.html">Flight</a></li>
+				<li class="navitem"><a href="plane.html">Plane</a></li>
+				<li class="navitem"><a href="city.html">City</a></li>
+				<li class="navitem"><a href="airport.html">Airport</a></li>
+				<li class="navitem"><a href="flight_passenger.html">Flight Passenger</a></li>
+				<li class="navitem"><a href="passengers.html">Passengers</a></li>
+            </ul>
+        </nav> 
+
+        <div class = "overview">
+            <h1><b>Flight Overview</b></h1>
+            <h3>The flight entity records the details of a single flight from point A to point B,
+				connecting flights would be two separate flights. Each flight will store data of
+				each Passenger through the passengers account_Id. Maintains a 1:M relationship
+				with Passenger as there are many passengers on one flight.			
+            </h3>         
+
+			<button type="button">insert</button>
+			<button type="button">delete</button>
+			<button type="button">update</button>
+			<button type="button">select</button>
+        </div>
 	
-
-
 	</body>
-
-
 </html>
