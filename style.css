@@ -1,3 +1,13 @@
+body {
+    text-decoration: none;
+    font-family: 'Roboto Slab';
+    margin: 0px;
+}
+
+header {
+    margin-left: 35px;
+}
+
 .navbar {
     font-size: 22px;
     background-color: #184274;
