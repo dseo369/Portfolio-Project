@@ -143,4 +143,14 @@ INSERT INTO `Flight` VALUES (200, 'Portland', 'Los Angeles', 90, 1), (201, 'Los 
 /*!40000 ALTER TABLE `Flight` ENABLE KEYS */;
 UNLOCK TABLES;
 
+DROP TABLE IF EXISTS `flight_passenger`;
 
+CREATE TABLE `flight_passenger`
+(
+   `flightId` int(11),
+   `accountId` int(11)
+
+PRIMARY KEY (`flightId`,`accountId`),
+CONSTRAINT FOREIGN KEY (flightId) REFERENCES flight(flightID),
+CONSTRAINT FOREIGN KEY (accountId) REFERENCES passenger(accountID)
+);
