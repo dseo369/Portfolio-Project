@@ -26,7 +26,7 @@ CREATE TABLE `Passenger` (
     `last_name` varchar(100) NOT NULL,
     `flightID` int(11) NOT NULL,
     PRIMARY KEY(`accountID`),
-    FOREIGN KEY(`flightID`) REFERENCES `Flight`(`flightID`)
+    CONSTRAINT `Passenger_ibfk_1` FOREIGN KEY(`flightID`) REFERENCES `Flight`(`flightID`)
 );
 
 --
@@ -100,7 +100,7 @@ CREATE TABLE `Airport` (
     `name` varchar(255) NOT NULL,
     `location` varchar(100) NOT NULL,
     PRIMARY KEY(`name`),
-    FOREIGN KEY(`location`) REFERENCES `City`(`name`)
+    CONSTRAINT `Airport_ibfk_1` FOREIGN KEY(`location`) REFERENCES `City`(`name`)
 );
 
 --
@@ -129,7 +129,7 @@ CREATE TABLE `Flight` (
     `eta` int(11) NOT NULL,
     `passengers` varchar(100) NOT NULL,
     PRIMARY KEY(`flightID`),
-    FOREIGN KEY(`passengers`) REFERENCES `Passenger`(`accountID`)
+    CONSTRAINT `Flight_ibfk_1` FOREIGN KEY(`passengers`) REFERENCES `Passenger`(`accountID`)
 );
 
 --
@@ -143,14 +143,37 @@ INSERT INTO `Flight` VALUES (200, 'Portland', 'Los Angeles', 90, 1), (201, 'Los 
 /*!40000 ALTER TABLE `Flight` ENABLE KEYS */;
 UNLOCK TABLES;
 
-DROP TABLE IF EXISTS `flight_passenger`;
+-- 
+-- Table Structure for 'Flight_Passenger' Table'
+--
 
-CREATE TABLE `flight_passenger`
-(
-   `flightId` int(11),
-   `accountId` int(11)
-
-PRIMARY KEY (`flightId`,`accountId`),
-CONSTRAINT FOREIGN KEY (flightId) REFERENCES flight(flightID),
-CONSTRAINT FOREIGN KEY (accountId) REFERENCES passenger(accountID)
+DROP TABLE IF EXISTS `Flight_Passenger`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Flight_Passenger` (
+    `flightID` int(11) NOT NULL,
+    `accountID` int(11) NOT NULL,
+    CONSTRAINT `Flight_Passenger_ibfk_1` FOREIGN KEY(`flightID`) REFERENCES `Flight`(`flightID`)
+    CONSTRAINT `Flight_Passenger_ibfk_2` FOREIGN KEY(`accountID`) REFERENCES `Passenger`(`accountID`)
 );
+
+--
+-- Dumping data for table `Flight_Passenger`
+--
+
+LOCK TABLES `Flight_Passenger` WRITE;
+/*!40000 ALTER TABLE `Flight_Passenger` DISABLE KEYS */;
+INSERT INTO `Flight_Passenger` VALUES ();
+/*!40000 ALTER TABLE `Flight_Passenger` ENABLE KEYS */;
+UNLOCK TABLES;
+
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
