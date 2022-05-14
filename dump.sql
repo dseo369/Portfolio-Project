@@ -53,6 +53,7 @@ CREATE TABLE `Plane` (
     `modelID` int(11) NOT NULL,
     `airports` varchar(100) NOT NULL,
     `type` varchar(100) NOT NULL,
+    UNIQUE(modelID);
     PRIMARY KEY(`modelID`)
 );
 
