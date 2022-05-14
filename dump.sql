@@ -26,6 +26,7 @@ CREATE TABLE `Passenger` (
     `last_name` varchar(100) NOT NULL,
     `flightID` int(11) NOT NULL,
     PRIMARY KEY(`accountID`),
+    UNIQUE(`accountID`),
     CONSTRAINT `Passenger_ibfk_1` FOREIGN KEY(`flightID`) REFERENCES `Flight`(`flightID`)
 );
 
@@ -76,6 +77,7 @@ DROP TABLE IF EXISTS `City`;
 CREATE TABLE `City` (
     `name` varchar(255) NOT NULL,
     `location` varchar(100) NOT NULL,
+    UNIQUE(`name`),
     PRIMARY KEY(`name`)
 );
 
@@ -100,6 +102,7 @@ CREATE TABLE `Airport` (
     `name` varchar(255) NOT NULL,
     `location` varchar(100) NOT NULL,
     PRIMARY KEY(`name`),
+    UNIQUE(`name`),
     CONSTRAINT `Airport_ibfk_1` FOREIGN KEY(`location`) REFERENCES `City`(`name`)
 );
 
@@ -129,6 +132,7 @@ CREATE TABLE `Flight` (
     `eta` int(11) NOT NULL,
     `passengers` varchar(100) NOT NULL,
     PRIMARY KEY(`flightID`),
+    UNIQUE(`flightID`),
     CONSTRAINT `Flight_ibfk_1` FOREIGN KEY(`passengers`) REFERENCES `Passenger`(`accountID`)
 );
 
@@ -163,7 +167,8 @@ CREATE TABLE `Flight_Passenger` (
 
 LOCK TABLES `Flight_Passenger` WRITE;
 /*!40000 ALTER TABLE `Flight_Passenger` DISABLE KEYS */;
-INSERT INTO `Flight_Passenger` VALUES ();
+INSERT INTO `Flight_Passenger`(flightID,accountID) VALUES ((SELECT flightID FROM `Flight` WHERE Flight.flightID = 200),(SELECT passengerID FROM `Passenger` WHERE Passenger.accountID = 1));
+INSERT INTO `Flight_Passenger`(flightID,accountID) VALUES ((SELECT flightID FROM `Flight` WHERE Flight.flightID = 201),(SELECT passengerID FROM `PASSENGER` WHERE Passenger.accountID = 1));
 /*!40000 ALTER TABLE `Flight_Passenger` ENABLE KEYS */;
 UNLOCK TABLES;
 
